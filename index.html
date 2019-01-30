@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    
+  </head>
+  <body>
+    <div id="content"></div>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" crossorigin="anonymous" />
+    <script>
+
+var h = React.createElement;
+
+class MyButton extends React.Component {
+  render() {
+    return h('Button', { class: "btn btn-info btn-sm"}, 'qwe');
+  }
+}
+
+class MyList extends React.Component {
+  render() {
+    var cdate = (new Date()).toTimeString(),
+      lis = this.props.data.map(function(text, idx){
+      return h('li', {key:idx }, text + ' ' + cdate)
+    });
+    return (
+      h('ul', null, lis)
+    )
+  }
+}
+
+class HelloWorldBanner extends React.Component {
+  render(){
+    return (
+      h('div', null,
+        h('h1', null, 'Hello World'),
+        h(MyButton, null, 'Test1'),
+        h(MyList, { data: [ 'qwe', 'asd', 'zxc'] })
+       )
+    )
+  }
+}
+
+ReactDOM.render(
+  React.createElement(HelloWorldBanner),
+  document.getElementById('content')
+)
+
+  </script>
+  </body>
+</html>
